@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.stek3.childregistry.code.User;
 import com.example.stek3.childregistry.code.child;
 import com.example.stek3.childregistry.code.parent;
 
@@ -61,6 +63,10 @@ public class db extends SQLiteOpenHelper {
 
         //  db.execSQL("DROP TABLE" + TABLE_CHILDREN);
 
+
+        String CREATE_USERS_TABLE="Create table [IF NOT EXISTS] Users (id integer primary key, firstname text, lastname text, username text,password text";
+
+        db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_CHILD_TABLE);
         db.execSQL(CREATE_PARENT_TABLE);
 
@@ -75,6 +81,66 @@ public class db extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
 
+    }
+
+    public boolean AddUsers(User user)
+    {
+
+        try {
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+
+            values.put("firstname", user.getFirstName());
+
+            values.put("lastname", user.getLastName());
+
+            values.put("username", user.getUserName());
+
+            values.put("password", user.getPassword());
+
+            db.insert("Users",null,values);
+            db.close();
+
+            return true;
+        }
+
+        catch (Exception ex){
+
+            return false;
+           //
+            // Toast.makeText(this,ex.getMessage().toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean Authenticated(String UserName,String Password){
+
+        String Count="0";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String Query="Select count * from Users where username='"+UserName+"' and password='"+Password+"'";
+
+        Cursor result=db.rawQuery(Query,null);
+
+        if(result.moveToFirst()){
+
+            do {
+
+                Count = result.getString(0);
+            }
+
+            while (result.moveToNext());
+        }
+
+        if(Integer.parseInt(Count) > 0){
+
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean AddParent(parent Parent) {
