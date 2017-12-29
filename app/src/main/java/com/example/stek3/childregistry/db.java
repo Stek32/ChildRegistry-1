@@ -38,8 +38,11 @@ public class db extends SQLiteOpenHelper {
     private static final String KEY_MIDDLENAME = "middlename";
     private static final String KEY_DOB = "dob";
 
-    public db(Context context) {
+    public db(Context context)
+    {
+
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
 
@@ -54,7 +57,7 @@ public class db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-//        db.execSQL("DROP TABLE" + TABLE_CHILDREN);
+       db.execSQL("DROP TABLE" + TABLE_CHILDREN);
 
         String CREATE_CHILD_TABLE = "CREATE TABLE [IF NOT EXISTS] " + TABLE_CHILDREN + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRSTNAME + " TEXT,"
@@ -63,15 +66,10 @@ public class db extends SQLiteOpenHelper {
         String CREATE_PARENT_TABLE = "Create table [IF NOT EXISTS] Parents (id integer primary key, child_id integer, firstname text, lastname text, middlename text," +
                 "FOREIGN KEY (child_id) REFERENCES " + TABLE_CHILDREN + " " + KEY_ID;
 
-
-
-
-
         String CREATE_USERS_TABLE="Create table [IF NOT EXISTS] Users (id integer primary key, firstname text, lastname text, username text,password text";
 
-
         db.execSQL(CREATE_USERS_TABLE);
-        db.execSQL(CREATE_CHILD_TABLE);
+//        db.execSQL(CREATE_CHILD_TABLE);
         db.execSQL(CREATE_PARENT_TABLE);
         //db.execSQL("Delete * from '"+TABLE_CHILDREN+"'");
 
