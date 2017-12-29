@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.stek3.childregistry.R;
+import com.example.stek3.childregistry.db;
 
 /**
  * Created by Stek3 on 23-Dec-17.
@@ -18,6 +19,9 @@ public class patient_card extends BaseAdapter {
 
     Context Context;
     LayoutInflater inflator;
+    db Database;
+
+    TextView firstname,lastname,middlename,age;
 
     String[] myarray = {"Steven", "Gilbert", "Phionah", "Patricia", "Malaika", "Derrick", "Hassan", "Fahad", "Timothy", "Moses", "Denis", "Angel"};
     int[] Age = {2, 3, 4, 5, 66, 65, 43, 524, 5, 23, 5, 32};
@@ -28,18 +32,21 @@ public class patient_card extends BaseAdapter {
         this.Context = context;
         inflator = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
+        Database=new db(context);
+
+
     }
 
     @Override
     public int getCount() {
 
-        return myarray.length;
+        return Database.getPatients().size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return myarray[position];
+        return Database.getPatients().get(position);
     }
 
     @Override
@@ -52,11 +59,13 @@ public class patient_card extends BaseAdapter {
 
         convertView = inflator.inflate(R.layout.view_patient_card, parent, false);
 
-        TextView firstname = (TextView) convertView.findViewById(R.id.firstname);
-        firstname.setText(myarray[position]);
+        firstname = (TextView) convertView.findViewById(R.id.firstname);
+        firstname.setText(Database.getPatients().get(position).getFirstName());
+        lastname= (TextView) convertView.findViewById(R.id.lastname);
+        lastname.setText(Database.getPatients().get(position).getLastName());
 
-        TextView age = (TextView) convertView.findViewById(R.id.dateofbirth);
-        age.setText(String.valueOf(Age[position]));
+        //TextView age = (TextView) convertView.findViewById(R.id.dateofbirth);
+        //age.setText(String.valueOf(Age[position]));
 
         return convertView;
 

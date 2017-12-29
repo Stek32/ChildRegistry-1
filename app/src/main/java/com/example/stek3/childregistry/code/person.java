@@ -9,11 +9,22 @@ import java.util.Date;
 public abstract class person {
 
 
+    private int ID;
     private String FirstName;
     private String LastName;
     private String MiddleName;
     private Date DOB;
     private int Gender;
+
+    public int getID(){
+
+        return ID;
+    }
+
+    public void setID(int id){
+
+        this.ID=id;
+    }
 
     public String getFirstName() {
 

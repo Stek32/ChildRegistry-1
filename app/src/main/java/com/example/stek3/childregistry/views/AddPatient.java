@@ -62,15 +62,16 @@ public class AddPatient extends LinearLayout {
 
         Button NextButton = (Button) this.findViewById(R.id.next_btn);
 
-        FirstName = (TextView) findViewById(R.id.firstname);
-        LastName = (TextView) findViewById(R.id.lastname);
-        MiddleName = (TextView) findViewById(R.id.middlename);
-        DateOfBirth = (TextView) findViewById(R.id.dateofbirth);
+        FirstName = (TextView) findViewById(R.id.firstname_edit);
+        LastName = (TextView) findViewById(R.id.lastname_edit);
+        MiddleName = (TextView) findViewById(R.id.middlename_edit);
+        DateOfBirth = (TextView) findViewById(R.id.dateofbirthedit);
 
         NextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // getChildData();
+
+                getChildData();
 
                 Intent intent = new Intent(context, register_parents.class);
                 context.startActivity(intent);
@@ -93,11 +94,14 @@ public class AddPatient extends LinearLayout {
 
         child Child = new child();
 
-        Child.setFirstName("Kizito");
+        Child.setFirstName("Ssebad");
+        Child.setLastName("Gilbert");
 
-        Child.setLastName("Steven");
+//        Child.setFirstName(FirstName.getText().toString());
+//
+//        Child.setLastName(LastName.getText().toString());
 
-        Child.setMiddleName("Katabalwa");
+        Child.setMiddleName(MiddleName.getText().toString());
 
         // Child.setDOB(java.sql.Date.valueOf(DateOfBirth.getText().toString()));
 

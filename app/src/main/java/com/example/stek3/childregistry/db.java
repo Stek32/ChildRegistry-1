@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.stek3.childregistry.code.User;
 import com.example.stek3.childregistry.code.child;
 import com.example.stek3.childregistry.code.parent;
 
@@ -52,17 +54,28 @@ public class db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_CHILD_TABLE = "CREATE TABLE " + TABLE_CHILDREN + "("
+//        db.execSQL("DROP TABLE" + TABLE_CHILDREN);
+
+        String CREATE_CHILD_TABLE = "CREATE TABLE [IF NOT EXISTS] " + TABLE_CHILDREN + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRSTNAME + " TEXT,"
                 + KEY_LASTNAME + " TEXT," + KEY_MIDDLENAME + " TEXT," + KEY_DOB + " TEXT" + ")";
 
         String CREATE_PARENT_TABLE = "Create table [IF NOT EXISTS] Parents (id integer primary key, child_id integer, firstname text, lastname text, middlename text," +
                 "FOREIGN KEY (child_id) REFERENCES " + TABLE_CHILDREN + " " + KEY_ID;
 
-        //  db.execSQL("DROP TABLE" + TABLE_CHILDREN);
 
+
+
+
+        String CREATE_USERS_TABLE="Create table [IF NOT EXISTS] Users (id integer primary key, firstname text, lastname text, username text,password text";
+
+
+        db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_CHILD_TABLE);
         db.execSQL(CREATE_PARENT_TABLE);
+        //db.execSQL("Delete * from '"+TABLE_CHILDREN+"'");
+
+
 
     }
 
@@ -75,6 +88,66 @@ public class db extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
 
+    }
+
+    public boolean AddUsers(User user)
+    {
+
+        try {
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+
+            values.put("firstname", user.getFirstName());
+
+            values.put("lastname", user.getLastName());
+
+            values.put("username", user.getUserName());
+
+            values.put("password", user.getPassword());
+
+            db.insert("Users",null,values);
+            db.close();
+
+            return true;
+        }
+
+        catch (Exception ex){
+
+            return false;
+           //
+            // Toast.makeText(this,ex.getMessage().toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean Authenticated(String UserName,String Password){
+
+        String Count="0";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String Query="Select count * from Users where username='"+UserName+"' and password='"+Password+"'";
+
+        Cursor result=db.rawQuery(Query,null);
+
+        if(result.moveToFirst()){
+
+            do {
+
+                Count = result.getString(0);
+            }
+
+            while (result.moveToNext());
+        }
+
+        if(Integer.parseInt(Count) > 0){
+
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean AddParent(parent Parent) {
@@ -110,6 +183,8 @@ public class db extends SQLiteOpenHelper {
     public boolean AddChild(child Child) {
 
         SQLiteDatabase db = this.getWritableDatabase();
+
+        onCreate(db);
 
         ContentValues values = new ContentValues();
 
@@ -159,11 +234,9 @@ public class db extends SQLiteOpenHelper {
 
             return false;
         }
-
-
     }
 
-    public List<child> getChildren() {
+    public List<child> getPatients() {
 
         List<child> ChildrenList = new ArrayList<child>();
 
@@ -171,6 +244,7 @@ public class db extends SQLiteOpenHelper {
         String selectQuery = "SELECT  * FROM " + TABLE_CHILDREN;
 
         SQLiteDatabase db = this.getWritableDatabase();
+
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -178,8 +252,9 @@ public class db extends SQLiteOpenHelper {
             do {
                 child Child = new child();
                 //Child.setID(Integer.parseInt(cursor.getString(0)));
-                Child.setFirstName(cursor.getString(0));
-                Child.setLastName(cursor.getString(1));
+                Child.setID(Integer.parseInt(cursor.getString(0)));
+                Child.setFirstName(cursor.getString(1));
+                Child.setLastName(cursor.getString(2));
                 // contact.setName(cursor.getString(1));
                 //contact.setPhoneNumber(cursor.getString(2));
                 // Adding contact to list
