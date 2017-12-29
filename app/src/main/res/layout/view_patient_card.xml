@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="10sp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +37,8 @@
                     android:layout_marginEnd="20sp"
                     android:layout_marginRight="20sp"
                     android:text="TextView"
-                    tools:text="First Name"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    tools:text="First Name" />
 
                 <TextView
                     android:id="@+id/lastname"
@@ -59,9 +60,11 @@
                     android:id="@+id/othername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="0sp"
                     android:text="Other name:"
                     android:textAlignment="viewStart"
-                    android:layout_marginStart="0sp" />
+                    android:layout_marginLeft="0sp"
+                    tools:ignore="RtlCompat" />
             </LinearLayout>
 
             <LinearLayout

@@ -43,6 +43,7 @@ public class db extends SQLiteOpenHelper {
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
+
     }
 
 
@@ -57,19 +58,23 @@ public class db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-       db.execSQL("DROP TABLE" + TABLE_CHILDREN);
 
-        String CREATE_CHILD_TABLE = "CREATE TABLE [IF NOT EXISTS] " + TABLE_CHILDREN + "("
+
+      // db.execSQL("DROP TABLE" + TABLE_CHILDREN);
+
+        String CREATE_CHILD_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_CHILDREN + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRSTNAME + " TEXT,"
                 + KEY_LASTNAME + " TEXT," + KEY_MIDDLENAME + " TEXT," + KEY_DOB + " TEXT" + ")";
 
-        String CREATE_PARENT_TABLE = "Create table [IF NOT EXISTS] Parents (id integer primary key, child_id integer, firstname text, lastname text, middlename text," +
-                "FOREIGN KEY (child_id) REFERENCES " + TABLE_CHILDREN + " " + KEY_ID;
+        String CREATE_PARENT_TABLE = "Create table IF NOT EXISTS Parents (id integer primary key, child_id integer, firstname text, lastname text, middlename text," +
+                "FOREIGN KEY (child_id) REFERENCES " + TABLE_CHILDREN + " (" + KEY_ID +"))";
 
-        String CREATE_USERS_TABLE="Create table [IF NOT EXISTS] Users (id integer primary key, firstname text, lastname text, username text,password text";
+        String CREATE_USERS_TABLE="Create table IF NOT EXISTS Users (id integer primary key, firstname TEXT, lastname TEXT, username TEXT,password TEXT)";
+
+        db.execSQL(CREATE_CHILD_TABLE);
 
         db.execSQL(CREATE_USERS_TABLE);
-//        db.execSQL(CREATE_CHILD_TABLE);
+
         db.execSQL(CREATE_PARENT_TABLE);
         //db.execSQL("Delete * from '"+TABLE_CHILDREN+"'");
 
@@ -243,6 +248,7 @@ public class db extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
+
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -253,6 +259,7 @@ public class db extends SQLiteOpenHelper {
                 Child.setID(Integer.parseInt(cursor.getString(0)));
                 Child.setFirstName(cursor.getString(1));
                 Child.setLastName(cursor.getString(2));
+                Child.setMiddleName(cursor.getString(3));
                 // contact.setName(cursor.getString(1));
                 //contact.setPhoneNumber(cursor.getString(2));
                 // Adding contact to list

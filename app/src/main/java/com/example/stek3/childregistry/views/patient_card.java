@@ -34,19 +34,21 @@ public class patient_card extends BaseAdapter {
 
         Database=new db(context);
 
-
     }
 
     @Override
     public int getCount() {
 
-        return Database.getPatients().size();
+       return Database.getPatients().size();
+
+
     }
 
     @Override
     public Object getItem(int position) {
 
         return Database.getPatients().get(position);
+
     }
 
     @Override
@@ -63,6 +65,8 @@ public class patient_card extends BaseAdapter {
         firstname.setText(Database.getPatients().get(position).getFirstName());
         lastname= (TextView) convertView.findViewById(R.id.lastname);
         lastname.setText(Database.getPatients().get(position).getLastName());
+        middlename=(TextView) convertView.findViewById(R.id.othername);
+        middlename.setText(Database.getPatients().get(position).getMiddleName());
 
         //TextView age = (TextView) convertView.findViewById(R.id.dateofbirth);
         //age.setText(String.valueOf(Age[position]));

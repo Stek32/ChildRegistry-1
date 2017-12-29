@@ -94,12 +94,9 @@ public class AddPatient extends LinearLayout {
 
         child Child = new child();
 
-        Child.setFirstName("Ssebad");
-        Child.setLastName("Gilbert");
+        Child.setFirstName(FirstName.getText().toString());
 
-//        Child.setFirstName(FirstName.getText().toString());
-//
-//        Child.setLastName(LastName.getText().toString());
+        Child.setLastName(LastName.getText().toString());
 
         Child.setMiddleName(MiddleName.getText().toString());
 
