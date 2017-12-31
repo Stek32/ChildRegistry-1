@@ -31,7 +31,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/firstname_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView5"
@@ -45,26 +45,26 @@
                 android:text="First Name" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/lastname_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText4"
-                android:layout_alignStart="@+id/editText4"
-                android:layout_below="@+id/editText4"
+                android:layout_alignLeft="@+id/firstname_edit"
+                android:layout_alignStart="@+id/firstname_edit"
+                android:layout_below="@+id/firstname_edit"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Last Name" />
 
             <EditText
-                android:id="@+id/middlename"
+                android:id="@+id/middlename_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText5"
+                android:layout_alignLeft="@+id/lastname_edit"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignStart="@+id/editText5"
-                android:layout_below="@+id/editText5"
+                android:layout_alignStart="@+id/lastname_edit"
+                android:layout_below="@+id/lastname_edit"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -105,7 +105,7 @@
 
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/dateofbirthedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/editText6"
