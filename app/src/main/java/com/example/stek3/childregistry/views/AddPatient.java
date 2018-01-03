@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stek3.childregistry.R;
+import com.example.stek3.childregistry.camera.view_camera_preview;
 import com.example.stek3.childregistry.code.child;
+import com.example.stek3.childregistry.code.returner;
 import com.example.stek3.childregistry.db;
 import com.example.stek3.childregistry.register_parents;
 
@@ -26,7 +28,7 @@ public class AddPatient extends LinearLayout {
 
     LayoutInflater inflater;
     View RegistryView;
-    Button CancelButton;
+    Button CancelButton,AddPicture_btn;
 
     TextView FirstName, LastName, MiddleName, DateOfBirth, BirthWeight;
 
@@ -67,14 +69,39 @@ public class AddPatient extends LinearLayout {
         MiddleName = (TextView) findViewById(R.id.middlename_edit);
         DateOfBirth = (TextView) findViewById(R.id.dateofbirthedit);
 
-        NextButton.setOnClickListener(new OnClickListener() {
+        AddPicture_btn=(Button)findViewById(R.id.addpicture);
+
+        AddPicture_btn.setOnClickListener(new OnClickListener()
+        {
             @Override
             public void onClick(View v) {
 
-                getChildData();
+                LinearLayout master=(LinearLayout)findViewById(R.id.master_layout);
+                master.removeAllViews();
 
-                Intent intent = new Intent(context, register_parents.class);
-                context.startActivity(intent);
+                master.addView(new view_camera_preview(context));
+
+            }
+        });
+
+        NextButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                if(getChildData().result)
+                {
+                    Intent intent = new Intent(context, register_parents.class);
+                    context.startActivity(intent);
+
+                }
+
+                else
+                    {
+
+                }
+
+                Toast.makeText(getContext(),getChildData().message,Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -84,20 +111,39 @@ public class AddPatient extends LinearLayout {
         CancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(context, "You have clicked the Cancel Button", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    public returner getChildData() {
 
-    public void getChildData() {
+        returner returns=new returner();
 
         child Child = new child();
 
+        returns.result=false;
+
+        if(FirstName.getText().toString().isEmpty()) {
+
+            returns.message="Please Enter Child's First Name";
+        }
+        else if(LastName.getText().toString().isEmpty())
+        {
+            returns.message="Please Enter Child's Last Name";
+        }
+        else if(MiddleName.getText().toString().isEmpty()){
+
+            Child.setMiddleName(null);
+            returns.result=true;
+        }
+
+        else
+            {
+
         Child.setFirstName(FirstName.getText().toString());
-
         Child.setLastName(LastName.getText().toString());
-
         Child.setMiddleName(MiddleName.getText().toString());
 
         // Child.setDOB(java.sql.Date.valueOf(DateOfBirth.getText().toString()));
@@ -105,24 +151,28 @@ public class AddPatient extends LinearLayout {
         db Database = new db(getContext());
 
         boolean result = Database.AddChild(Child);
-        String message;
 
 
         if (result) {
 
-            message = "You have added a child to the registry";
+            returns.message = "You have added a child to the registry";
 
             LinearLayout ll = (LinearLayout) findViewById(R.id.patients_layout);
 
+            returns.result=true;
+        }
 
-        } else {
+        else {
 
-            message = "Something is wrong with your database";
+            returns.result=false;
+
+            returns.message = "Something is wrong with your database";
 
         }
 
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            }
 
+            return returns;
     }
 
 

@@ -6,7 +6,7 @@
         android:id="@+id/registry_adder"
         android:orderInCategory="100"
         android:title="Add"
-        android:icon="@drawable/additionalicon"
+        android:icon="@drawable/addicon"
         app:showAsAction="always" />
 
 

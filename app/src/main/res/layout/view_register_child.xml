@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/master_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,6 +17,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="5dp">
+
+
 
             <TextView
                 android:id="@+id/textView5"
@@ -31,6 +35,38 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/healthunitdistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView5"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/textView5"
+                android:layout_below="@+id/textView5"
+                android:layout_marginTop="20dp"
+                android:contextClickable="false"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                android:hint="Health Unit District"/>
+
+            <EditText
+                android:id="@+id/healthunit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView5"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/textView5"
+                android:layout_below="@+id/textView5"
+                android:layout_marginTop="20dp"
+                android:contextClickable="false"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                android:hint="Health Unit"/>
+
+            <EditText
                 android:id="@+id/firstname_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,9 +76,11 @@
                 android:layout_alignStart="@+id/textView5"
                 android:layout_below="@+id/textView5"
                 android:layout_marginTop="20dp"
+                android:contextClickable="false"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="First Name" />
+                android:selectAllOnFocus="false"
+                android:hint="First Name"/>
 
             <EditText
                 android:id="@+id/lastname_edit"
@@ -54,7 +92,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Last Name" />
+                android:hint="Last Name" />
 
             <EditText
                 android:id="@+id/middlename_edit"
@@ -68,19 +106,26 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Middle Name" />
+                android:hint="Middle Name" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <Button
+                    android:id="@+id/addpicture"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Add Picture" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Gender"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp" />
+                    android:textSize="20dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -116,7 +161,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:inputType="date"
-                android:text="D.O.B" />
+                android:hint="D.O.B" />
 
             <EditText
                 android:id="@+id/editText8"
@@ -124,10 +169,19 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="Birth Weight"
+                android:hint="Birth Weight"
 
                 />
 
+            <EditText
+                android:id="@+id/BirthOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Birth Order"
+
+                />
 
             <com.example.stek3.childregistry.views.location_card
                 android:layout_width="match_parent"

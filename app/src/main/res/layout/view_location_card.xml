@@ -22,21 +22,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="District" />
+        android:hint="District" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parish" />
+        android:hint="Parish" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="County" />
+        android:hint="County" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sub County" />
+        android:hint="Sub County" />
 
 </LinearLayout>

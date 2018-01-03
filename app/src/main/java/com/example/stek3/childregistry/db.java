@@ -130,7 +130,7 @@ public class db extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String Query="Select count * from Users where username='"+UserName+"' and password='"+Password+"'";
+        String Query="Select count (*) from Users where username='"+UserName+"' and password='"+Password+"'";
 
         Cursor result=db.rawQuery(Query,null);
 

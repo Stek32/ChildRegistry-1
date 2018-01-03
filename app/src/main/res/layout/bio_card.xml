@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="First Name" />
+        android:hint="First Name *" />
 
     <EditText
         android:id="@+id/lastname"
@@ -18,15 +19,63 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Last Name" />
+        android:hint="Last Name *"
+        />
 
     <EditText
         android:id="@+id/middlename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginBottom="10sp"
         android:inputType="textPersonName"
-        android:text="Middle Name" />
+        android:hint="Middle Name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Picture here"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/camerabtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CAMERA" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OR"
+                android:textAlignment="center"
+                android:layout_marginStart="90dp"/>
+
+            <Button
+                android:id="@+id/upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UPLOAD" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/profileview"
+            android:layout_width="174dp"
+            android:layout_height="111dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            />
+
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/DoB"
@@ -34,7 +83,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date"
-        android:text="D.O.B" />
+        android:hint="D.O.B" />
 
     <EditText
         android:id="@+id/occupation"
@@ -42,7 +91,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Occupation" />
+        android:hint="Occupation" />
 
 
 </LinearLayout>

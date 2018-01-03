@@ -6,4 +6,8 @@
     tools:context="com.example.stek3.childregistry.content">
 
 
+    <com.example.stek3.childregistry.camera.view_camera_preview
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.stek3.childregistry.camera.view_camera_preview>
+
 </android.support.constraint.ConstraintLayout>

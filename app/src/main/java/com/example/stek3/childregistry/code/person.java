@@ -33,7 +33,9 @@ public abstract class person {
 
     public void setFirstName(String firstName) {
 
-        this.FirstName = firstName;
+
+            this.FirstName = firstName;
+
     }
 
     public String getLastName() {
