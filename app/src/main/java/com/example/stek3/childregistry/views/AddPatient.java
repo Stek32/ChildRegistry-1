@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stek3.childregistry.R;
-import com.example.stek3.childregistry.camera.view_camera_preview;
 import com.example.stek3.childregistry.code.child;
 import com.example.stek3.childregistry.code.returner;
 import com.example.stek3.childregistry.database.db;
@@ -79,7 +78,7 @@ public class AddPatient extends LinearLayout {
                 LinearLayout master=(LinearLayout)findViewById(R.id.master_layout);
                 master.removeAllViews();
 
-                master.addView(new view_camera_preview(context));
+
 
             }
         });

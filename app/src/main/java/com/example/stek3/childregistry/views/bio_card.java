@@ -65,7 +65,7 @@ public class bio_card extends LinearLayout {
         this.context = context;
 
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.bio_card, this, true);
+        inflater.inflate(R.layout.view_bio_card, this, true);
 
         FirstName = (EditText) findViewById(R.id.firstname);
         LastName = (EditText) findViewById(R.id.lastname);
