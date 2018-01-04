@@ -17,8 +17,8 @@ import com.example.stek3.childregistry.R;
 import com.example.stek3.childregistry.camera.view_camera_preview;
 import com.example.stek3.childregistry.code.child;
 import com.example.stek3.childregistry.code.returner;
-import com.example.stek3.childregistry.db;
-import com.example.stek3.childregistry.register_parents;
+import com.example.stek3.childregistry.database.db;
+import com.example.stek3.childregistry.RegisterParentsActivity;
 
 /**
  * Created by Stek3 on 26-Dec-17.
@@ -91,7 +91,7 @@ public class AddPatient extends LinearLayout {
 
                 if(getChildData().result)
                 {
-                    Intent intent = new Intent(context, register_parents.class);
+                    Intent intent = new Intent(context, RegisterParentsActivity.class);
                     context.startActivity(intent);
 
                 }

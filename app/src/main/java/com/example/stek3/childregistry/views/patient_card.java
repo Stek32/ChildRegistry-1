@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.stek3.childregistry.R;
-import com.example.stek3.childregistry.db;
+import com.example.stek3.childregistry.database.db;
 
 /**
  * Created by Stek3 on 23-Dec-17.

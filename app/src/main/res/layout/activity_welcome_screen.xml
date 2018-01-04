@@ -8,7 +8,7 @@
     android:background="#660033"
 
 
-    tools:context="com.example.stek3.childregistry.WelcomeScreen">
+    tools:context="com.example.stek3.childregistry.WelcomeScreenActivity">
 
     <ImageView
         android:id="@+id/imageView2"

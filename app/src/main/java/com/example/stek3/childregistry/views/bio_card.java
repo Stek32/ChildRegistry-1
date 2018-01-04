@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.graphics.Camera;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -18,9 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.stek3.childregistry.R;
-import com.example.stek3.childregistry.RegisterPatientActivity;
 import com.example.stek3.childregistry.code.returner;
-import com.example.stek3.childregistry.register_parents;
 
 /**
  * Created by Stek3 on 27-Dec-17.

@@ -15,7 +15,7 @@ import com.example.stek3.childregistry.views.bio_card;
 
 import java.io.IOException;
 
-public class register_parents extends AppCompatActivity {
+public class RegisterParentsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

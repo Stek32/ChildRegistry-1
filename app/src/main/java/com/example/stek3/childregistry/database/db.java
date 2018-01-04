@@ -1,4 +1,4 @@
-package com.example.stek3.childregistry;
+package com.example.stek3.childregistry.database;
 
 import android.content.ContentValues;
 import android.content.Context;

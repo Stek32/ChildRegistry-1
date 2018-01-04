@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.stek3.childregistry.code.User;
+import com.example.stek3.childregistry.database.db;
 
-public class WelcomeScreen extends AppCompatActivity {
+public class WelcomeScreenActivity extends AppCompatActivity {
 
     db database;
 
@@ -21,7 +22,7 @@ public class WelcomeScreen extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(4000);
-                    Intent  intent = new Intent(getApplicationContext(),LoginScreen.class);
+                    Intent  intent = new Intent(getApplicationContext(),LoginScreenActivity.class);
                     startActivity(intent);
                     finish();
                 } catch (InterruptedException e) {

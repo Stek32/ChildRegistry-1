@@ -9,7 +9,7 @@
     android:background="#660033"
 
 
-    tools:context="com.example.stek3.childregistry.LoginScreen"
+    tools:context="com.example.stek3.childregistry.LoginScreenActivity"
     android:orientation="vertical">
 
     <TextView

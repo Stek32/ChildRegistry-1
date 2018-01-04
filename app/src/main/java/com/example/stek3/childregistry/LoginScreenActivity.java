@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginScreen extends AppCompatActivity {
+import com.example.stek3.childregistry.database.db;
+
+public class LoginScreenActivity extends AppCompatActivity {
 
     EditText UserName,Password;
     db database;
